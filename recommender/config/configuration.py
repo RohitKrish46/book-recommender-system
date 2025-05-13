@@ -28,19 +28,24 @@ class AppConfiguration:
 
     def get_data_ingestion_config(self) -> DataIngestionConfig:
         try:
+            # get the dict from the config file
             data_ingestion_config = self.config_info['data_ingestion_config']
+            # get the config info
             artifacts_dir = self.config_info['artifacts_config']['artifacts_dir']
             dataset_dir = data_ingestion_config['dataset_dir']
+            kaggle_dataset_name = data_ingestion_config['dataset_name']
+            # kaggle_username = data_ingestion_config['username']
+            # kaggle_key = data_ingestion_config['key']
 
             ingested_data_dir = os.path.join(artifacts_dir, dataset_dir, data_ingestion_config['ingested_dir'])
             raw_data_dir = os.path.join(artifacts_dir, dataset_dir, data_ingestion_config['raw_data_dir'])
 
             response = DataIngestionConfig(
-                dataset_download_url = data_ingestion_config['dataset_download_url'],
+                kaggle_dataset_name = kaggle_dataset_name,
                 raw_data_dir = raw_data_dir,
-                ingested_dir = ingested_data_dir
+                ingested_data_dir = ingested_data_dir,
             )
-            logging.info(f"Data Ingestion Config: {response}")
+            logging.info("Data Ingestion Config Loaded")
             return response
         
         except Exception as e:
