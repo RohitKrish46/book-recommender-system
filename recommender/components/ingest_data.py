@@ -95,7 +95,7 @@ class ZipDataIngestion(DataIngestion):
 # Factory class for Data Ingestors
 class DataIngestionFactory:
     @staticmethod
-    def get_data_ingestor(file_extension: str) -> DataIngestion:
+    def get_data_ingestor(file_extension: str = '.zip') -> DataIngestion:
         if file_extension.endswith('.zip'):
             return ZipDataIngestion()
         else:
