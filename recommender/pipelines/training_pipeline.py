@@ -1,14 +1,7 @@
 import sys
 from recommender.components.ingest_data import DataIngestionFactory, ZipDataIngestion
 from recommender.exception.exception_handler import AppException
-import logging
-from recommender.logger.log import LoggingConfig
-LoggingConfig(
-    log_dir="logs",
-    log_prefix="log",
-    file_log_level=logging.INFO,
-    # console_log_level=logging.DEBUG
-)
+from recommender.logger.log import logging
 class TrainingPipeline:
     def __init__(self):
         self.data_ingestion = DataIngestionFactory()
@@ -25,7 +18,7 @@ class TrainingPipeline:
 
             # ingest data
             ingestor.ingest_data(file_path)
-            
+
         except Exception as e:
             logging.error(f"Error during ingestion: {e}")
             raise AppException(e, sys) from e
