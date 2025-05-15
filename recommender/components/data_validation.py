@@ -34,7 +34,7 @@ class DataValidation:
                                 "Image-URL-L":"image_url"},inplace=True)
 
             
-            # Lets remane some wierd columns name in ratings
+            # Lets rename some wierd columns name in ratings
             ratings.rename(columns={"User-ID":'user_id',
                                 'Book-Rating':'rating'},inplace=True)
 
@@ -61,10 +61,9 @@ class DataValidation:
             final_rating.to_csv(os.path.join(self.data_validation_config.clean_data_dir,'clean_data.csv'), index = False)
             logging.info(f"Saved cleaned data to {self.data_validation_config.clean_data_dir}")
 
-
             #saving final_rating objects for web app
             os.makedirs(self.data_validation_config.serialized_objects_dir, exist_ok=True)
-            pickle.dump(final_rating,open(os.path.join(self.data_validation_config.serialized_objects_dir, "final_rating.pkl"),'wb'))
+            pickle.dump(final_rating, open(os.path.join(self.data_validation_config.serialized_objects_dir, "final_rating.pkl"),'wb'))
             logging.info(f"Saved final_rating serialization object to {self.data_validation_config.serialized_objects_dir}")
 
         except Exception as e:
