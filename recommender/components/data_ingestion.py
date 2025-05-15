@@ -86,7 +86,7 @@ class ZipDataIngestion(DataIngestion):
             if len(csv_files) > 3:
                 raise ValueError("More than one .csv file found in the extracted data.")
 
-            logging.info(f"{'='*20}Data ingestion completed{'='*20}")
+            logging.info(f"{'='*20}Data ingestion completed{'='*20} \n\n")
 
         except Exception as e:
             raise AppException(e, sys) from e
