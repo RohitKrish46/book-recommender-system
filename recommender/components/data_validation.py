@@ -5,8 +5,7 @@ import pickle
 from recommender.logger.log import logging
 from recommender.exception.exception_handler import AppException
 from recommender.config.configuration import AppConfiguration
-import warnings
-warnings.filterwarnings("ignore", category=UserWarning, module='pandas')
+
 
 class DataValidation:
     def __init__(self, app_config=AppConfiguration()):
@@ -73,8 +72,7 @@ class DataValidation:
         
     def start_data_validation(self):
         try:
-            logging.info(f"{'='*20}Data Validation log started{'='*20} ")
             self.preprocess_data()
-            logging.info(f"{'='*20}Data Validation log completed{'='*20} \n\n")
+            logging.info(f"{'='*20}Data Validation completed{'='*20} \n\n")
         except Exception as e:
             raise AppException(e, sys) from e
