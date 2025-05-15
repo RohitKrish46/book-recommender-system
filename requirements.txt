@@ -130,8 +130,8 @@ python-slugify==8.0.4
     # via kaggle
 pytz==2025.2
     # via pandas
-pywin32==310
-    # via jupyter-core
+# pywin32==310
+#     # via jupyter-core
 pyyaml==6.0.2
     # via book-recommender-system (pyproject.toml)
 pyzmq==26.4.0
