@@ -6,25 +6,30 @@
 [![Docker](https://img.shields.io/badge/Docker-28.1.1-blue?logo=docker)](https://hub.docker.com/r/yourusername/your-repo)
 [![AWS EC2](https://img.shields.io/badge/AWS_EC2-Deployed-yellow?logo=amazon-ec2)](https://aws.amazon.com/ec2)
 [![Docker Pulls](https://img.shields.io/docker/pulls/rokrr/bookapp?logo=docker&label=DockerHubPulls)](https://hub.docker.com/r/rokrr/bookapp)
+[![Streamlit 1.45.1+](https://img.shields.io/badge/Streamlit-v1.45.1%2B-FF4B4B?logo=streamlit)](https://your-url)
 
 Book Recommender System is a modular and extensible book recommendation engine, featuring a custom training pipeline, robust logging and exception handling, and an interactive Streamlit interface for real-time book recommendations. The project is fully deployed on AWS EC2, providing a scalable, production-ready environment for live usage and demonstrations. Designed with clean architecture and best practices, it supports both experimentation and real-world deployment.
 
 ## Table of Contents
-- Overview
+- [Overview](#overview)
 
-- Features
+- [Features](#features)
 
-- Architecture and Workflow
+- [Architecture and Workflow](#architecture-and-workflow)
 
-- Installation & Setup
+- [AWS EC2 Deployment Guide](#aws-ec2-deployment-guide)
 
-- Usage
+- [Usage](#usage)
 
-- Folder Structure
+- [Application Screenshots](#application-screenshots)
 
-- Technologies Stack
+- [Internal Conventions](#internal-conventions)
 
-- Future Improvements
+- [Folder Structure](#folder-structure)
+
+- [Technologies Stack](#technologies-stack)
+
+- [Future Improvements](#future-improvements)
 
 
 ## Overview
@@ -190,7 +195,7 @@ Streamlit UI Features:
    - Train Engine: Run training from the UI
    - Get Recommendations: Type a book name to see similar recommendations
    - Cover Images: Displays book covers alongside titles
-   - 
+
 ## Application Screenshots
 1. **Home page**:  A page with an introduction to the app
 ![image](https://github.com/user-attachments/assets/a8da13d8-c21b-4039-ba14-098c5de11cbb)
@@ -202,12 +207,21 @@ Streamlit UI Features:
 ![image](https://github.com/user-attachments/assets/83ee63c8-31a1-409d-8f22-c3eb9bebcbd9)
 
 
+## Internal Conventions
 
+- **Logging:**  
+  Uses `recommender.logger.log` for consistent logging across modules.
 
+- **Exception Handling:**  
+  All major operations are wrapped in try/except blocks and raise `AppException` for unified error management.
 
+- **Configuration:**  
+  Uses an `AppConfiguration` object to manage paths for models and serialized objects.
 
+- **Artifacts:**  
+  Trained models and serialized data (e.g., pivot tables, ratings) are loaded and saved using `pickle`.
 
-## Project Structure
+## Folder Structure
 
 ```
 book-recommender-system/
@@ -249,85 +263,41 @@ book-recommender-system/
 
 ```
 
----
+## Technologies Stack
 
+**Programming Language** 
 
+![Python](https://img.shields.io/badge/Python-3776AB?style=for-the-badge&logo=python&logoColor=white)
 
----
+**Machine Learning**  
 
-## Usage
+![Scikit-learn](https://img.shields.io/badge/Scikit--learn-ff9933?style=for-the-badge&logo=scikit-learn&logoColor=white)
+![SciPy](https://img.shields.io/badge/SciPy-8CAAE6?style=for-the-badge&logo=scipy&logoColor=white)
 
-### 1. Train the Recommendation Engine
+**Data Manipulation & Visualization** 
 
-To run the training pipeline:
+![Pandas](https://img.shields.io/badge/Pandas-150458?style=for-the-badge&logo=pandas&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![Seaborn](https://img.shields.io/badge/Seaborn-7db0bc?style=for-the-badge&logo=chartdotjs&logoColor=white)
+![Matplotlib](https://img.shields.io/badge/Matplotlib-11557C?style=for-the-badge&logo=plotly&logoColor=white)
 
-```bash
-python main.py
-```
+**Deployment & Web Framework**  
 
-This will execute all pipeline steps in sequence. Progress and errors are logged.
+![Docker](https://img.shields.io/badge/Docker-2496ED?style=for-the-badge&logo=docker&logoColor=white)
+![AWS EC2](https://img.shields.io/badge/AWS%20EC2-FF9900?style=for-the-badge&logo=amazonaws&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
-### 2. Run the Streamlit App
+**Package Manager**
 
-The `app.py` file provides a Streamlit interface for generating book recommendations.
+![uv](https://img.shields.io/badge/uv-311f3a?style=for-the-badge&logo=zap&logoColor=white)
 
-#### Features:
-- **Train Engine:** Triggers the training pipeline from the UI.
-- **Get Recommendations:** Enter a book name to receive recommendations and cover images.
+## Future Improvements
+Below are some enhancements planned for future versions:
 
-#### Example usage in code:
-```python
-rec = Recommendation()
-rec.train_engine()  # Trains the pipeline and displays a message
-rec.recommendations_engine(selected_books)  # Shows recommended books with images
-```
+- **Hybrid Recommendation Models**: Combine collaborative filtering with content-based filtering using book metadata (genres, authors, descriptions, etc.) for improved personalization.
 
----
+- **Incorporate NLP Models**: Integrate transformer-based models like BERT to analyze book descriptions or user reviews for semantic recommendations.
 
-## Internal Conventions
+- **CI/CD Integration**: Set up automated testing and deployment workflows using GitHub Actions or similar tools.
 
-- **Logging:**  
-  Uses `recommender.logger.log` for consistent logging across modules.
-
-- **Exception Handling:**  
-  All major operations are wrapped in try/except blocks and raise `AppException` for unified error management.
-
-- **Configuration:**  
-  Uses an `AppConfiguration` object to manage paths for models and serialized objects.
-
-- **Artifacts:**  
-  Trained models and serialized data (e.g., pivot tables, ratings) are loaded and saved using `pickle`.
-
----
-
-## Requirements
-
-- Python 3.x
-- streamlit
-- numpy
-- pickle
-- (Other dependencies as required by your components)
-
-Install dependencies with:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-## Notes
-
-- The pipeline is modular; each stage can be extended or replaced.
-- The recommendation engine uses a nearest neighbors model trained on user ratings.
-- The Streamlit app displays recommendations with book cover images.
-
----
-
-## License
-
-This project is for educational and demonstration purposes.
-
----
-
-For questions or issues, please open an issue in the repository.
+- **Graph-based Recommendation**: Explore knowledge graph embeddings or user-book interaction graphs to enhance recommendation diversity and explainability.
