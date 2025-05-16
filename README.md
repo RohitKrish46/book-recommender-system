@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Docker](https://img.shields.io/badge/Docker-28.1.1-blue?logo=docker)](https://hub.docker.com/r/yourusername/your-repo)
 [![AWS EC2](https://img.shields.io/badge/AWS_EC2-Deployed-yellow?logo=amazon-ec2)](https://aws.amazon.com/ec2)
-[![Docker Pulls](https://img.shields.io/docker/pulls/rokrr/bookapp?logo=docker&label=DockerHubPulls)](https://hub.docker.com/r/rokrr/bookapp)
+[![docker pulls](https://img.shields.io/docker/pulls/rokrr/bookapp?logo=docker&label=docker-pulls)](https://hub.docker.com/r/rokrr/bookapp)
 [![Streamlit 1.45.1+](https://img.shields.io/badge/Streamlit-v1.45.1%2B-FF4B4B?logo=streamlit)](https://your-url)
 
 Book Recommender System is a modular and extensible book recommendation engine, featuring a custom training pipeline, robust logging and exception handling, and an interactive Streamlit interface for real-time book recommendations. The project is fully deployed on AWS EC2, providing a scalable, production-ready environment for live usage and demonstrations. Designed with clean architecture and best practices, it supports both experimentation and real-world deployment.
